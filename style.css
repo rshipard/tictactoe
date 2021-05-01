@@ -1,0 +1,12 @@
+.gameBox {
+  display: grid;
+  grid-template-columns: 120px 120px 120px;
+  justify-content: center;
+  row-gap: 15px;
+}
+
+.gameBox div {
+  width: 100px;
+  height: 100px;
+  border: 3px solid black;
+}
