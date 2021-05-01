@@ -11,22 +11,30 @@
     <p>Would you like to play a game? Do you want that game to be Tic Tac Toe? Do you have a friend, family member, imaginary friend or kidnap victim who will play with you? Great, because if you don't, whis is not the page for you!</p>
     <p>The rules are simple, taking turns click on a square. You can't click on a square someone has already filled in. If you can get 3 squares in a row your colour, you win.</p>
   </div>
+  <div>
+    <input type="text" placeholder="Player 1's name" id="playerOneName">
+    <input type="text" placeholder="Player 2's name" id="playerTwoName">
+    <button id='generateStartPlayer'>Click here to find whose going first</button>
+    <p>The first player is :</p>
+    <p id="startPlayer"></p>
+  </div>
   <div class="gameBox">
-    <div class="box1"></div>
-    <div class="box2"></div>
-    <div class="box3"></div>
-    <div class="box4"></div>
-    <div class="box5"></div>
-    <div class="box6"></div>
-    <div class="box7"></div>
-    <div class="box8"></div>
-    <div class="box9"></div>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+    <div id="box4"></div>
+    <div id="box5"></div>
+    <div id="box6"></div>
+    <div id="box7"></div>
+    <div id="box8"></div>
+    <div id="box9"></div>
   </div>
   <div>
     <h2>Select your player colour and make a move</h2>
+    <h3></h3>
     <div class='buttons'>
-      <button>Red player</button>
-      <button>Green player</button>
+      <button id="playerOne">Player One - Red</button>
+      <button id="playerTwo">Player Two - Green</button>
     </div>
   </div>
 </body>
