@@ -11,11 +11,20 @@ generateStartPlayerButton.addEventListener('click', function (event) {
   startplayerDisplay.textContent = startPlayer + " who will start by playing blue, click on a square to start, then take turns clicking on the squares."
 })
 
-const arrayColors = ['blue', 'red', 'blue', 'red', 'blue', 'red', 'blue', 'red', 'blue']
+
+
+let turnCounter = 1
 
 
 
-// previous value = "x"
-// now inside a funtion change previous value = "o" etc
+let clickTest = document.querySelector('.gameboard')
 
-let gridArray = [0,0,0,0,0,0,0,0,0]
+clickTest.addEventListener('click', function (){
+  if (turnCounter % 2) {
+    console.log('x')
+    turnCounter++
+    } else {
+    console.log('o')
+    turnCounter++
+    }
+})
