@@ -28,6 +28,8 @@ gameboardAction.addEventListener('click', function () {
     }
 })
 
+
+//surely i can make a loop or something??? to fix this nonsen
 let boxOne = document.querySelector('#box1')
 let boxTwo = document.querySelector('#box2')
 let boxThree = document.querySelector('#box3')

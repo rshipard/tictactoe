@@ -2,7 +2,7 @@ body {
   margin: 0 auto;
   width: 70%;
   text-align: center;
-  background-color: rgb(38, 38, 38);
+  background-color: rgb(25, 25, 25);
   color: rgb(106, 159, 214);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -17,9 +17,25 @@ body {
 .gameboard div {
   width: 100px;
   height: 100px;
-  border: 3px solid black;
+  border: 3px solid rgb(0, 81, 167);
+  border-radius: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 200%;
 }
 
 .topRules {
   margin: 50px 5px;
+}
+
+input {
+  border-radius: 15px;
+  height: 20px;
+  text-align: center;
+}
+
+button {
+  border-radius: 15px;
+  height: 25px;
 }
