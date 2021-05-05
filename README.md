@@ -2,6 +2,6 @@
 
 This is a game designed as my first project within the GA Software Immersive Flex Program.
 
-The game itself needs little introduction, the rules are included as part of the website. Instead I thought if anyone wanted to see my reasoning and why I've chosen certain methods this would be the best place to properly explain why I've chosen what I have.
+My initial thoughts were to create only a few variables and then to use nested functions to small blocks of code that I could test individually, then bring them together within a few larger functions that would be called as people clicked on the individual cells fo the game.
 
-I will be comming back to this document and updating it over time, however please don't expect it to be kept updated exactly with any changes I have made. Indeed this may be a good snapshot of one way I tried to to this project.
+I was trying to look for ways to make the game scaleable, but I decided early on that could take a backseat to getting the code done quickly. My thoughts being it's better ot have code that works, that is easily bug tested, than to do something that scale wells but I won't know works until much later.

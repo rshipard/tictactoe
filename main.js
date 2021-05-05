@@ -1,7 +1,9 @@
 let startPlayer = ''
+let secondPlayer = ''
 let turnCounter = 1
-let playerMark = 'X'
+let playerMark = ''
 let boardState = [1,1,1,1,1,1,1,1,1]
+let winnerSymbol = ''
 // note to self game will always start with first player using "x"
 
 let generateStartPlayerButton = document.querySelector('#generateStartPlayer')
@@ -10,15 +12,52 @@ generateStartPlayerButton.addEventListener('click', function (event) {
   let playerOneName = document.querySelector('#playerOneName').value
   let playerTwoName = document.querySelector('#playerTwoName').value
   let startplayerDisplay = document.querySelector('#startPlayer')
+  if (playerOneName === '' || playerTwoName === '') {
+    startplayerDisplay.textContent = 'You must fill in the Player\'s names. If you don\'t have a friend, pet or hostage, make one up!'
+    return
+  }
   let startPlayerRandomiser = Math.floor(Math.random() * 2)
   let playerArray = [playerOneName, playerTwoName]
-  playerColors = []
   startPlayer = playerArray[startPlayerRandomiser]
-  startplayerDisplay.textContent = startPlayer + " is playing the X's, click a box to start then take turns selecting a box."
+  playerMark = 'X'
+  secondPlayerIs()
+  startplayerDisplay.textContent = startPlayer + " goes first with 'X', click a square to start, then take turns selecting a box. The game will automatically switch between 'X' & 'O' for you."
 })
 
-// REMEMBER to use slice to return portions of the array!!!!!!!
+function secondPlayerIs () {
+  let playerOneName = document.querySelector('#playerOneName').value
+  let playerTwoName = document.querySelector('#playerTwoName').value
+  let playerArray = [playerOneName, playerTwoName]
+  if (startPlayer === playerArray[0]) {
+    secondPlayer = playerArray[1]
+  } else {
+    secondPlayer = playerArray[0]
+  }
+}
 
+function winCheck () {
+  if (checkOne === 'X') {
+    winnerDisplay.textContent = startPlayer + ' has Won!'
+  } else if (checkOne === 'O') {
+    winnerDisplay.textContent = secondPlayer + ' has Won!'
+  } else if (checkOne === '') {
+    winnerDisplay.textContent = "The game hasn't started yet. Please fill in the player's names and click the button."
+  } else {
+    winnerDisplay.textContent = 'Cut that out! The game has ended.'
+  }
+}
+
+function winnerMessage () {
+  if (winnerSymbol === 'X') {
+    winnerDisplay.textContent = startPlayer + ' has Won!'
+    playerMark = "Game Over"
+  } else if (winnerSymbol === 'O') {
+    winnerDisplay.textContent = secondPlayer + ' has Won!'
+    playerMark = "Game Over"
+  } else {
+    winnerDisplay.textContent = 'Cut that out! The game has ended.'
+  }
+}
 
 function checkWinConditions () {
   let checkOne = boardState[0]
@@ -30,43 +69,58 @@ function checkWinConditions () {
   let checkSeven = boardState[6]
   let checkEight = boardState[7]
   let checkNine = boardState[8]
+  if (playerMark === '') {
+    return
+  }
   if (checkOne != 1 && checkOne === checkTwo && checkTwo === checkThree) {
-    console.log('row one win')
-  } else if (checkFour != 1 && checkFour === checkFive && checkFive === checkSix) {
-    console.log('row two win')
+    winnerSymbol = checkOne
+    winnerMessage(winnerSymbol)    
+  } else if (checkFour != 1 && checkFour === checkFive && checkFive ===   checkSix) {
+      winnerSymbol = checkFour
+      winnerMessage(winnerSymbol)
   } else if (checkSeven != 1 && checkSeven === checkEight && checkEight === checkNine) {
-    console.log('row three win')
+      winnerSymbol = checkSeven
+      winnerMessage(winnerSymbol)
   } else if (checkOne != 1 && checkOne === checkFive && checkFive === checkNine) {
-    console.log('diagonal victory')
+      winnerSymbol = checkOne
+      winnerMessage(winnerSymbol)
   } else if (checkThree != 1 && checkThree === checkFive && checkFive === checkSeven) {
-    console.log('diagonal victory')
+      winnerSymbol = checkThree
+      winnerMessage(winnerSymbol)
   } else if (checkOne != 1 && checkOne === checkFour && checkFour === checkSeven) {
-    console.log('column victory')
+      winnerSymbol = checkOne
+      winnerMessage(winnerSymbol)
   } else if (checkTwo != 1 && checkTwo === checkFive && checkFive === checkEight) {
-    console.log('column victory')
+      cwinnerSymbol = checkTwo
+      winnerMessage(winnerSymbol)
   } else if (checkThree != 1 && checkThree === checkSix && checkSix === checkNine) {
-    console.log('column victory')
-  } else if (turnCounter < 10) {
-    console.log('keep playing')
-  } else {
-    console.log('no-one wins. The world ends.')
+      winnerSymbol = checkThree
+      winnerMessage(winnerSymbol)
+    } else if (turnCounter < 10) {
+    } else {
+      winnerDisplay.textContent = 'It\'s a draw, no-one has Won!'
+      playerMark = 'Game Over'
   }
 }
 
 function turnSwitcher () {
-  if (turnCounter % 2 && turnCounter < 10) {
+  if (playerMark === '') {
+    let winnerDisplay = document.querySelector('#winnerDisplay')
+    winnerDisplay.textContent = "Names people! The game can't start until we have names!"
+  } else  if (turnCounter % 2 && turnCounter < 10) {
     playerMark = 'X'
     turnCounter++
-    } else if (turnCounter < 10) {
+  } else if (turnCounter < 10) {
     playerMark = 'O'
     turnCounter++
-    } else {
-      //note to self does turncounter need to be under 10 or 11? tired, need sleep, work brain work.
-      console.log('game over to be coded...')
-    }
+  }
 }
 
 //surely i can make a loop or something??? to fix this nonsense
+
+
+
+
 let boxOne = document.querySelector('#box1')
 let boxTwo = document.querySelector('#box2')
 let boxThree = document.querySelector('#box3')
