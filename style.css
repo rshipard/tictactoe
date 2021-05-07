@@ -39,3 +39,10 @@ button {
   border-radius: 15px;
   height: 25px;
 }
+
+#playerScores {
+  display: grid;
+  grid-template-columns: 180px 180px;
+  justify-content: center;
+  row-gap: 45px;
+}

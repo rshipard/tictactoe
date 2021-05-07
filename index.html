@@ -8,15 +8,14 @@
 <body>
   <div class=topRules>
     <h1>Tic Tac Toe</h1>
-    <p>Would you like to play a game? Do you want that game to be Tic Tac Toe? Do you have a friend, family member, imaginary friend or kidnap victim who will play with you? Great, because if you don't, whis is not the page for you!</p>
-    <p>Rules:taking turns click on a square. You can't click on a square someone has already filled in. If you can get 3 squares in a line of your colour, you win.</p>
+    <p>Would you like to play a game? Do you want that game to be Tic Tac Toe? Do you have a friend, family member, imaginary friend or kidnap victim who will play with you? Great, because if you don't, this is not the page for you!</p>
+    <p>Rules: Players take turns selecting a square. You can't click on a square someone has already filled in. If you can get 3 squares in a line, you win.</p>
   </div>
   <div>
     <p>Enter the player's names below;</p>
     <input type="text" placeholder="Player 1's name" id="playerOneName">
     <input type="text" placeholder="Player 2's name" id="playerTwoName">
     <button id='generateStartPlayer'>Click to find out who goes first</button>
-    <p>The first player is :</p>
     <p id="startPlayer"></p>
   </div>
   <div class="gameboard">
@@ -32,6 +31,12 @@
   </div>
   <div>
     <p id="winnerDisplay"></p>
+    <div id="playerScores">
+      <p id="playerOneName"></p>
+      <p id="playerOneScore"></p>
+      <p id="playerTwoName"></p>
+      <p id="playerTwoScore"></p>
+    </div>
   </div>
 </body>
 </html>

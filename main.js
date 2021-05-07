@@ -13,7 +13,7 @@ generateStartPlayerButton.addEventListener('click', function (event) {
   let playerTwoName = document.querySelector('#playerTwoName').value
   let startplayerDisplay = document.querySelector('#startPlayer')
   if (playerOneName === '' || playerTwoName === '') {
-    startplayerDisplay.textContent = 'You must fill in the Player\'s names. If you don\'t have a friend, pet or hostage, make one up!'
+    startplayerDisplay.textContent = 'You must fill in both the Player\'s names. If you don\'t have a friend, pet or hostage, make one up!'
     return
   }
   let startPlayerRandomiser = Math.floor(Math.random() * 2)
@@ -21,7 +21,7 @@ generateStartPlayerButton.addEventListener('click', function (event) {
   startPlayer = playerArray[startPlayerRandomiser]
   playerMark = 'X'
   secondPlayerIs()
-  startplayerDisplay.textContent = startPlayer + " goes first with 'X', click a square to start, then take turns selecting a box. The game will automatically switch between 'X' & 'O' for you."
+  startplayerDisplay.textContent = startPlayer + " goes first with 'X', then " + secondPlayer + " who is play with 'O'. The game will automatically switch for you."
 })
 
 function secondPlayerIs () {
@@ -32,18 +32,6 @@ function secondPlayerIs () {
     secondPlayer = playerArray[1]
   } else {
     secondPlayer = playerArray[0]
-  }
-}
-
-function winCheck () {
-  if (checkOne === 'X') {
-    winnerDisplay.textContent = startPlayer + ' has Won!'
-  } else if (checkOne === 'O') {
-    winnerDisplay.textContent = secondPlayer + ' has Won!'
-  } else if (checkOne === '') {
-    winnerDisplay.textContent = "The game hasn't started yet. Please fill in the player's names and click the button."
-  } else {
-    winnerDisplay.textContent = 'Cut that out! The game has ended.'
   }
 }
 
@@ -69,38 +57,38 @@ function checkWinConditions () {
   let checkSeven = boardState[6]
   let checkEight = boardState[7]
   let checkNine = boardState[8]
-  if (playerMark === '') {
-    return
-  }
-  if (checkOne != 1 && checkOne === checkTwo && checkTwo === checkThree) {
-    winnerSymbol = checkOne
-    winnerMessage(winnerSymbol)    
-  } else if (checkFour != 1 && checkFour === checkFive && checkFive ===   checkSix) {
+  if (playerMark !== '') {
+    if (checkOne != 1 && checkOne === checkTwo && checkTwo === checkThree) {
+      winnerSymbol = checkOne
+      winnerMessage(winnerSymbol)    
+    } else if (checkFour != 1 && checkFour === checkFive && checkFive ===   checkSix) {
       winnerSymbol = checkFour
       winnerMessage(winnerSymbol)
-  } else if (checkSeven != 1 && checkSeven === checkEight && checkEight === checkNine) {
+    } else if (checkSeven != 1 && checkSeven === checkEight && checkEight === checkNine) {
       winnerSymbol = checkSeven
       winnerMessage(winnerSymbol)
-  } else if (checkOne != 1 && checkOne === checkFive && checkFive === checkNine) {
+    } else if (checkOne != 1 && checkOne === checkFive && checkFive === checkNine) {
       winnerSymbol = checkOne
       winnerMessage(winnerSymbol)
-  } else if (checkThree != 1 && checkThree === checkFive && checkFive === checkSeven) {
+    } else if (checkThree != 1 && checkThree === checkFive && checkFive === checkSeven) {
       winnerSymbol = checkThree
       winnerMessage(winnerSymbol)
-  } else if (checkOne != 1 && checkOne === checkFour && checkFour === checkSeven) {
+    } else if (checkOne != 1 && checkOne === checkFour && checkFour === checkSeven) {
       winnerSymbol = checkOne
       winnerMessage(winnerSymbol)
-  } else if (checkTwo != 1 && checkTwo === checkFive && checkFive === checkEight) {
+    } else if (checkTwo != 1 && checkTwo === checkFive && checkFive === checkEight) {
       cwinnerSymbol = checkTwo
       winnerMessage(winnerSymbol)
-  } else if (checkThree != 1 && checkThree === checkSix && checkSix === checkNine) {
+    } else if (checkThree != 1 && checkThree === checkSix && checkSix === checkNine) {
       winnerSymbol = checkThree
       winnerMessage(winnerSymbol)
     } else if (turnCounter < 10) {
-    } else {
-      winnerDisplay.textContent = 'It\'s a draw, no-one has Won!'
-      playerMark = 'Game Over'
+      } else {
+        winnerDisplay.textContent = 'It\'s a draw, no-one has Won!'
+        playerMark = 'Game Over'
+    }
   }
+
 }
 
 function turnSwitcher () {
@@ -116,21 +104,23 @@ function turnSwitcher () {
   }
 }
 
-//surely i can make a loop or something??? to fix this nonsense
+let gameboard = document.querySelectorAll('.gameboard div')
+
+for ( let i = 0; i < gameboard.length; i++) {
+  let currentBox = gameboard[i]
+  currentBox.addEventListener('click', function () {
+    if (currentBox.innerText != 'x' && currentBox.innerText != 'o') {
+      turnSwitcher()
+      currentBox.innerText = playerMark
+      boardState.splice([i], 1, playerMark)
+      checkWinConditions()
+    }
+  })
+}
 
 
 
-
-let boxOne = document.querySelector('#box1')
-let boxTwo = document.querySelector('#box2')
-let boxThree = document.querySelector('#box3')
-let boxFour = document.querySelector('#box4')
-let boxFive = document.querySelector('#box5')
-let boxSix = document.querySelector('#box6')
-let boxSeven = document.querySelector('#box7')
-let boxEight = document.querySelector('#box8')
-let boxNine = document.querySelector('#box9')
-
+/*
 boxOne.addEventListener('click', function () {
   if (boxOne.innerText != 'x' && boxOne.innerText != 'o') {
     turnSwitcher()
@@ -211,3 +201,19 @@ boxNine.addEventListener('click', function () {
     checkWinConditions()
   }
 })
+
+*/
+
+/*
+function winCheck () {
+  if (checkOne === 'X') {
+    winnerDisplay.textContent = startPlayer + ' has Won!'
+  } else if (checkOne === 'O') {
+    winnerDisplay.textContent = secondPlayer + ' has Won!'
+  } else if (checkOne === '') {
+    winnerDisplay.textContent = "The game hasn't started yet. Please fill in the player's names and click the button."
+  } else {
+    winnerDisplay.textContent = 'Cut that out! The game has ended.'
+  }
+}
+*/
