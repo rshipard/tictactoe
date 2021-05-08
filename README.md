@@ -60,4 +60,4 @@ I was trying to look for ways to make the game scaleable, but I decided early on
 
 Too late I realised that the planning stages are quite possible the most important. If you push something off, or miss it entirely the time spent having to redesign or re-engineer can end up costing you hours for what should have been a 2 minute dot point in your planning.
 
-Case in point - scaleability. If I'd factored that in early and focused on it I would have written this code completely differently. -->
+Case in point - scaleability. If I'd factored that in early and focused on it I would have written this code completely differently.
