@@ -2,13 +2,13 @@
 
 This is a game designed as my first project within the GA Software Immersive Flex Program. We needed to ensure it:
 
-- **Render a game in the browser**
-- **Switch turns** between more than one player
-- **Design logic for winning** & **visually display which player won**
+- **Rendered a game in the browser**
+- **Switched turns between the two players** 
+- **Design the logic for winning** & **visually display which player won**
 - **Include separate HTML / CSS / JavaScript files**
 - Use **Javascript** for **DOM manipulation**
-- **Deploy your game online**, where the rest of the world can access it
-- Use **semantic markup** for HTML and CSS (adhere to best practices)
+- **Deploy the game online**, where the rest of the world can access it
+- Use **semantic markup** for HTML and CSS (adhering to best practices)
 
 ## Check out the end result!
 
